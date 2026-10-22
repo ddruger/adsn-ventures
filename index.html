@@ -8,27 +8,21 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Michroma&family=Saira:ital,wdth,wght@1,125,900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b1220;
-      --bg-glow: #16233d;
-      --ink: #f4f1ea;
-      --muted: #9aa3b5;
-      --accent: #c9a96e;
-      --accent-ink: #0b1220;
+      --bg: #000;
+      --ink: #fff;
+      --blue: #0ab4f0;
+      --muted: #6b6b6b;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body { height: 100%; }
-
     body {
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
       color: var(--ink);
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, var(--bg-glow) 0%, transparent 70%),
-        var(--bg);
+      background: var(--bg);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -43,7 +37,7 @@
       justify-content: center;
       text-align: center;
       padding: 48px 16px;
-      gap: 48px;
+      gap: clamp(56px, 10vw, 120px);
     }
 
     /* Logo */
@@ -51,63 +45,72 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: clamp(10px, 2vw, 22px);
     }
 
-    .logo-mark {
-      width: 72px;
-      height: 72px;
-    }
-
+    /*
+      The blue stripe is painted inside the letters with a single gradient
+      across the whole word, so it sits at exactly the same height in every
+      letter. Black bands on either side cut the letters, giving the
+      "split" look.
+    */
     .logo-word {
-      font-family: "Playfair Display", Georgia, serif;
-      font-weight: 600;
-      font-size: clamp(44px, 9vw, 84px);
-      letter-spacing: 0.06em;
+      display: inline-block;
+      font-family: "Saira", "Arial Black", sans-serif;
+      font-style: italic;
+      font-weight: 900;
+      font-stretch: 125%;
+      font-variation-settings: "wdth" 125;
+      font-size: clamp(64px, 20vw, 210px);
       line-height: 1;
+      letter-spacing: -0.02em;
+      padding: 0 0.08em;
+      color: var(--ink);
+      background: linear-gradient(
+        to bottom,
+        var(--ink) 0%,
+        var(--ink) 52%,
+        var(--bg) 52%,
+        var(--bg) 54.5%,
+        var(--blue) 54.5%,
+        var(--blue) 59%,
+        var(--bg) 59%,
+        var(--bg) 61.5%,
+        var(--ink) 61.5%,
+        var(--ink) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .logo-sub {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: clamp(12px, 2vw, 15px);
-      font-weight: 500;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--accent);
-      /* offset trailing letter-spacing so the text sits centered */
-      padding-left: 0.5em;
-    }
-
-    .logo-sub::before,
-    .logo-sub::after {
-      content: "";
-      width: 36px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.6;
+      font-family: "Michroma", "Eurostile", sans-serif;
+      font-size: clamp(12px, 3.6vw, 38px);
+      letter-spacing: 0.95em;
+      /* offset trailing letter-spacing so the word sits centered */
+      padding-left: 0.95em;
+      -webkit-text-stroke: 0.03em var(--ink);
+      line-height: 1;
+      color: var(--ink);
     }
 
     /* Button */
     .cta {
       display: inline-block;
-      padding: 16px 40px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--accent-ink);
-      font-size: 16px;
+      padding: 20px 44px;
+      border-radius: 2px;
+      background: var(--blue);
+      color: #000;
+      font-size: 18px;
       font-weight: 600;
-      letter-spacing: 0.02em;
       text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-      box-shadow: 0 8px 24px rgba(201, 169, 110, 0.18);
+      transition: transform 0.15s ease, background 0.15s ease;
     }
 
     .cta:hover {
-      background: #d6b97f;
+      background: #3cc6f5;
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(201, 169, 110, 0.28);
     }
 
     .cta:focus-visible {
@@ -126,14 +129,8 @@
 <body>
   <main>
     <div class="logo" role="img" aria-label="ADSN Ventures">
-      <svg class="logo-mark" viewBox="0 0 72 72" aria-hidden="true">
-        <!-- Rising "A": two strokes climbing to a peak, like a growth line -->
-        <rect x="1" y="1" width="70" height="70" rx="16" fill="none" stroke="#c9a96e" stroke-width="2" />
-        <path d="M18 54 L36 18 L54 54" fill="none" stroke="#f4f1ea" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M26 42 L46 42" fill="none" stroke="#c9a96e" stroke-width="4" stroke-linecap="round" />
-      </svg>
-      <div class="logo-word">ADSN</div>
-      <div class="logo-sub">Ventures</div>
+      <div class="logo-word" aria-hidden="true">ADSN</div>
+      <div class="logo-sub" aria-hidden="true">VENTURES</div>
     </div>
 
     <a class="cta" href="mailto:sean@adsnventures.com">Get In Touch</a>
