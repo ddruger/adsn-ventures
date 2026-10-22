@@ -42,9 +42,40 @@
 
     /* Logo artwork has a transparent background */
     .logo {
-      display: block;
+      position: relative;
       width: min(720px, 90vw);
-      height: auto;
+      aspect-ratio: 1366 / 442;
+    }
+
+    .logo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /*
+      Blue sheen: a band of brand blue sweeps across the letters every 8s.
+      The overlay is masked to the logo's shape so it only touches the artwork.
+    */
+    .logo-sheen {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      -webkit-mask: url("logo.png") center / 100% 100% no-repeat;
+      mask: url("logo.png") center / 100% 100% no-repeat;
+      background: linear-gradient(105deg, transparent 35%, rgba(10, 180, 240, 0.8) 50%, transparent 65%) no-repeat;
+      background-size: 50% 100%;
+      background-position: -200% 0;
+      animation: sheen 8s ease-in-out 0.6s infinite;
+    }
+
+    @keyframes sheen {
+      0% { background-position: -200% 0; }
+      20%, 100% { background-position: 300% 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-sheen { animation: none; }
     }
 
     /* Button */
@@ -80,7 +111,10 @@
 </head>
 <body>
   <main>
-    <img class="logo" src="logo.png" alt="ADSN Ventures" width="1366" height="442">
+    <div class="logo">
+      <img src="logo.png" alt="ADSN Ventures" width="1366" height="442">
+      <div class="logo-sheen" aria-hidden="true"></div>
+    </div>
 
     <a class="cta" href="mailto:sean@adsnventures.com">Get In Touch</a>
   </main>
