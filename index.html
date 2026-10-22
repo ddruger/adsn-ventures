@@ -78,6 +78,29 @@
       .logo-sheen { animation: none; }
     }
 
+    /*
+      Grid reveal: a faint blue grid shows only in a circle around the mouse.
+      Mouse devices only; touch screens never see it.
+    */
+    .cursor-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      background-image:
+        linear-gradient(rgba(10, 180, 240, 0.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 180, 240, 0.35) 1px, transparent 1px);
+      background-size: 36px 36px;
+      -webkit-mask: radial-gradient(circle 180px at var(--x, -999px) var(--y, -999px), #000 0%, transparent 100%);
+      mask: radial-gradient(circle 180px at var(--x, -999px) var(--y, -999px), #000 0%, transparent 100%);
+    }
+
+    .cursor-grid.on { opacity: 1; }
+
+    main, footer { position: relative; z-index: 1; }
+
     /* Button */
     .cta {
       display: inline-block;
@@ -110,6 +133,8 @@
   </style>
 </head>
 <body>
+  <div class="cursor-grid" aria-hidden="true"></div>
+
   <main>
     <div class="logo">
       <img src="logo.png" alt="ADSN Ventures" width="1366" height="442">
@@ -123,6 +148,16 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      const grid = document.querySelector(".cursor-grid");
+      document.addEventListener("pointermove", (e) => {
+        grid.style.setProperty("--x", e.clientX + "px");
+        grid.style.setProperty("--y", e.clientY + "px");
+        grid.classList.add("on");
+      });
+      document.documentElement.addEventListener("pointerleave", () => grid.classList.remove("on"));
+    }
   </script>
 </body>
 </html>
