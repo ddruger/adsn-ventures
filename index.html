@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADSN Ventures</title>
+  <meta name="description" content="ADSN Ventures — get in touch.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-glow: #16233d;
+      --ink: #f4f1ea;
+      --muted: #9aa3b5;
+      --accent: #c9a96e;
+      --accent-ink: #0b1220;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, var(--bg-glow) 0%, transparent 70%),
+        var(--bg);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 16px;
+      gap: 48px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo-mark {
+      width: 72px;
+      height: 72px;
+    }
+
+    .logo-word {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(44px, 9vw, 84px);
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+
+    .logo-sub {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: clamp(12px, 2vw, 15px);
+      font-weight: 500;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--accent);
+      /* offset trailing letter-spacing so the text sits centered */
+      padding-left: 0.5em;
+    }
+
+    .logo-sub::before,
+    .logo-sub::after {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* Button */
+    .cta {
+      display: inline-block;
+      padding: 16px 40px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      box-shadow: 0 8px 24px rgba(201, 169, 110, 0.18);
+    }
+
+    .cta:hover {
+      background: #d6b97f;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201, 169, 110, 0.28);
+    }
+
+    .cta:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="logo" role="img" aria-label="ADSN Ventures">
+      <svg class="logo-mark" viewBox="0 0 72 72" aria-hidden="true">
+        <!-- Rising "A": two strokes climbing to a peak, like a growth line -->
+        <rect x="1" y="1" width="70" height="70" rx="16" fill="none" stroke="#c9a96e" stroke-width="2" />
+        <path d="M18 54 L36 18 L54 54" fill="none" stroke="#f4f1ea" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M26 42 L46 42" fill="none" stroke="#c9a96e" stroke-width="4" stroke-linecap="round" />
+      </svg>
+      <div class="logo-word">ADSN</div>
+      <div class="logo-sub">Ventures</div>
+    </div>
+
+    <a class="cta" href="mailto:sean@adsnventures.com">Get In Touch</a>
+  </main>
+
+  <footer>&copy; <span id="year">2026</span> ADSN Ventures</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
