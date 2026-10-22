@@ -65,13 +65,14 @@
       mask: url("logo.png") center / 100% 100% no-repeat;
       background: linear-gradient(105deg, transparent 35%, rgba(10, 180, 240, 0.8) 50%, transparent 65%) no-repeat;
       background-size: 50% 100%;
-      background-position: -200% 0;
-      animation: sheen 8s ease-in-out 0.6s infinite;
+      background-position: -100% 0;
+      animation: sheen 8s ease-in-out infinite;
     }
 
+    /* Sweep takes ~3s (first 37.5% of the 8s cycle), then rests until the next pass */
     @keyframes sheen {
-      0% { background-position: -200% 0; }
-      20%, 100% { background-position: 300% 0; }
+      0% { background-position: -100% 0; }
+      37.5%, 100% { background-position: 200% 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
