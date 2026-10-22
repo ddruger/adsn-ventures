@@ -8,7 +8,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Michroma&family=Saira:ital,wdth,wght@1,112,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #000;
@@ -40,58 +40,11 @@
       gap: clamp(56px, 10vw, 120px);
     }
 
-    /* Logo */
+    /* Logo artwork has a pure black background, so it blends into the page */
     .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(10px, 2vw, 22px);
-    }
-
-    /*
-      The blue stripe is painted inside the letters with a single gradient
-      across the whole word, so it sits at exactly the same height in every
-      letter. Black bands on either side cut the letters, giving the
-      "split" look.
-    */
-    .logo-word {
-      display: inline-block;
-      font-family: "Saira", "Arial Black", sans-serif;
-      font-style: italic;
-      font-weight: 500;
-      font-stretch: 112%;
-      font-variation-settings: "wdth" 112;
-      font-size: clamp(64px, 20vw, 210px);
-      line-height: 1;
-      letter-spacing: 0.02em;
-      padding: 0 0.08em;
-      color: var(--ink);
-      background: linear-gradient(
-        to bottom,
-        var(--ink) 0%,
-        var(--ink) 36%,
-        var(--bg) 36%,
-        var(--bg) 37.8%,
-        var(--blue) 37.8%,
-        var(--blue) 41%,
-        var(--bg) 41%,
-        var(--bg) 42.8%,
-        var(--ink) 42.8%,
-        var(--ink) 100%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .logo-sub {
-      font-family: "Michroma", "Eurostile", sans-serif;
-      font-size: clamp(12px, 3.6vw, 38px);
-      letter-spacing: 0.95em;
-      /* offset trailing letter-spacing so the word sits centered */
-      padding-left: 0.95em;
-      line-height: 1;
-      color: var(--ink);
+      display: block;
+      width: min(720px, 90vw);
+      height: auto;
     }
 
     /* Button */
@@ -127,10 +80,7 @@
 </head>
 <body>
   <main>
-    <div class="logo" role="img" aria-label="ADSN Ventures">
-      <div class="logo-word" aria-hidden="true">ADSN</div>
-      <div class="logo-sub" aria-hidden="true">VENTURES</div>
-    </div>
+    <img class="logo" src="logo.png" alt="ADSN Ventures" width="1366" height="442">
 
     <a class="cta" href="mailto:sean@adsnventures.com">Get In Touch</a>
   </main>

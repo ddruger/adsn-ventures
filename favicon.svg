@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="10" fill="#000" />
-  <!-- Slanted "A" with the same blue stripe as the logo -->
-  <path d="M10 54 L32 10 L41 10 L48 54 L41 54 L39.5 44 L25 44 L20 54 Z M28 37.5 L38.5 37.5 L36 17 Z" fill="#fff" fill-rule="evenodd" />
-  <rect x="4" y="22" width="56" height="2" fill="#000" />
-  <rect x="4" y="24" width="56" height="3" fill="#0ab4f0" />
-  <rect x="4" y="27" width="56" height="2" fill="#000" />
+  <!-- Bold italic "A" with the same blue stripe as the logo -->
+  <path d="M8 54 L30 10 L46 10 L52 54 L40 54 L39 46 L26 46 L22 54 Z M29 38 L38 38 L36 20 Z" fill="#fff" fill-rule="evenodd" />
+  <rect x="4" y="30" width="56" height="2.5" fill="#000" />
+  <rect x="4" y="32.5" width="56" height="3" fill="#0ab4f0" />
+  <rect x="4" y="35.5" width="56" height="2.5" fill="#000" />
 </svg>
